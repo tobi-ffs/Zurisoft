@@ -25,10 +25,23 @@ namespace KountaApp.Pages.Transaction
         [BindProperty]
         public DateTime? Date { get; set; }
 
+        [BindProperty]
+        public List<string> categories { get; set; }
+
+
         public IncomeModel(KountaDbContext kountaDbContext, UserManager<ApplicationUser> userManager)
         {
             this.kountaDbContext = kountaDbContext;
-            _userManager = userManager; ;
+            _userManager = userManager;
+
+            // add income categories to the list
+
+            categories = new List<string>
+            {
+                "Commission",
+                "Tips",
+                "Donation",
+            };
         }
 
         public void OnGet()

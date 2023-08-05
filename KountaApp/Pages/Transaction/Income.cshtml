@@ -313,10 +313,13 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-md-4 col-lg-3 col-form-label" for="floatingPosition">Category</label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input type="text" class="form-control" id="floatingName" asp-for="Category">
-                                    </div>
+                                    <select asp-for="Category" class="form-control" required>
+                                        <option value="">-- Select Category --</option>
+                                        @foreach (var category in Model.categories)
+                                        {
+                                            <option value="@category">@category</option>
+                                        }
+                                    </select>
                                     <span asp-validation-for="Category" class="text-danger"></span>
                                 </div>
 
