@@ -4,6 +4,16 @@
 @{
     ViewData["Title"] = "Log in";
 }
+<style>
+    /*Loader*/
+    #loader {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+    }
+</style>
 @using KountaApp.Areas.Identity.Data;
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManger
@@ -59,7 +69,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary" onclick="this.disabled=true;this.form.submit();">Log in</button>
                                     </div>
 
                                     <div>
@@ -122,4 +132,9 @@
 </main><!-- End #main -->
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('login-submit').addEventListener('click', function () {
+            document.getElementById('loader').classList.remove('d-none');
+        });
+    </script>
 }
