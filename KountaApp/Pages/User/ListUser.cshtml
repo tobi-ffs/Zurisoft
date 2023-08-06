@@ -1,7 +1,6 @@
 ﻿@page
-@model KountaApp.Pages.Employee.ListEmployeeModel
+@model KountaApp.Pages.User.ListUserModel
 @{
-    // Retrive user ID and name
     var user = await UserManager.GetUserAsync(User);
     var userId = user?.Id;
     var userName = user?.FirstName;
@@ -11,7 +10,6 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManger
 @inject UserManager<ApplicationUser> UserManager
-
 
 <body>
 
@@ -235,11 +233,11 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Employees</h1>
+            <h1>Company Profile</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Client</li>
+                    <li class="breadcrumb-item active">Company Profile</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -254,7 +252,7 @@
 
                             <!--Successs message-->
                             <!--View employee-->
-                            @if (Model.Employees != null && Model.Employees.Any())
+                            @if (Model.ApplicationUsers != null && Model.ApplicationUsers.Any())
                             {
                                 <table class="table datatable">
                                     <thead>
@@ -264,31 +262,33 @@
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Position</th>
+                                            <th>Address</th>
+                                            <th>City</th>
+                                          
+                                           
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var employee in Model.Employees)
+                                        @foreach (var applicationuser in Model.ApplicationUsers)
                                         {
                                             <tr>
-                                                <td>@employee.EmployeeId</td>
-                                                <td>@employee.ApplicationUsers?.CompanyName</td>
-                                                <td>@employee.FirstName</td>
-                                                <td>@employee.LastName</td>
-                                                <td>@employee.Email</td>
-                                                <td>@employee.Phone</td>
-                                                <td>@employee.Position</td>
+                                                <td>@applicationuser.Id</td>
+                                                <td>@applicationuser.CompanyName</td>
+                                                <td>@applicationuser.FirstName</td>
+                                                <td>@applicationuser.LastName</td>
+                                                <td>@applicationuser.Email</td>
+                                                <td>@applicationuser.Address</td>
+                                                <td>@applicationuser.City</td>
+                                               
+                                               
                                                 <td>
-                                                    <a href="/Employee/EditEmployee/@employee.EmployeeId" class="btn btn-dark">
+                                                    <a href="/User/EditUser/@applicationuser.Id" class="btn btn-dark">
                                                         Edit
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="/Employee/Pay/@employee.EmployeeId" class="btn btn-success">
-                                                        Pay
-                                                    </a>
+                                                    
                                                 </td>
                                             </tr>
                                         }
@@ -299,7 +299,7 @@
                             }
                             else
                             {
-                                <p>No Employeees found!</p>
+                                <p>No User found!</p>
                             }
 
 
@@ -322,4 +322,5 @@
     </main><!-- End #main -->
 
 </body>
+
 
