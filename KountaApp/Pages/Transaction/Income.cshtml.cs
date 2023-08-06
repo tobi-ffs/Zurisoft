@@ -41,6 +41,10 @@ namespace KountaApp.Pages.Transaction
                 "Commission",
                 "Tips",
                 "Donation",
+                "Sales",
+                "Grants",
+                "Rental income",
+                "Disposal of Fixed Assests",
             };
         }
 
