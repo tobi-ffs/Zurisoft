@@ -42,6 +42,9 @@ namespace KountaApp.Pages.Transaction
                 "Transportation",
                 "Insurance",
                 "Administration",
+                "Repairs and Maintenance",
+                "Depreciation",
+                "Marketing",
             };
         }
 

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using SendGrid.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("KountaDbContextConnection") ?? throw new InvalidOperationException("Connection string 'KountaDbContextConnection' not found.");
@@ -22,7 +24,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     options.Password.RequireLowercase = false;
     options.Password.RequireUppercase = false;
     options.SignIn.RequireConfirmedEmail = true;
-}).AddEntityFrameworkStores<KountaDbContext>().AddSignInManager<SignInManager<ApplicationUser>>();
+}).AddEntityFrameworkStores<KountaDbContext>();
+
+// manually add SignIn Manager
+builder.Services.TryAddScoped<SignInManager<ApplicationUser>>();
+builder.Services.TryAddScoped<UserManager<ApplicationUser>>();
 
 
 builder.Services.AddIdentityCore<ApplicationUser>(options =>
@@ -35,6 +41,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.ExpireTimeSpan = TimeSpan.FromDays(30); // Set the desired expiration time for the cookie
     options.SlidingExpiration = true;
+  
 });
 
 builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection("SendGridSettings"));
@@ -56,9 +63,6 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 });
 
 
-// add logger
-//builder.Services.AddSingleton<ILogger>(provider =>
-  // provider.GetRequiredService<ILogger<ApplicationUser>>());
 
 
 // Add services to the container.
@@ -81,6 +85,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthentication();;
+
 
 app.UseAuthorization();
 
