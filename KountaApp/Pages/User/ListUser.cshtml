@@ -1,8 +1,16 @@
-﻿@page "{id:int}"
-@model KountaApp.Pages.Vendor.EditVendorModel
+﻿@page
+@model KountaApp.Pages.User.ListUserModel
 @{
-    var message = ViewData["Message"]?.ToString();
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user?.Id;
+    var userName = user?.FirstName;
+    var userLname = user?.LastName;
 }
+@using KountaApp.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManger
+@inject UserManager<ApplicationUser> UserManager
+
 <body>
 
     <!-- ======= Header ======= -->
@@ -11,14 +19,17 @@
 
 
         <div class="d-flex align-items-center justify-content-between">
-            <a asp-area="" asp-page="/Index" class="logo d-flex align-items-center">
+            <a class="logo d-flex align-items-center" asp-area="" asp-page="/Index">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">KOUNTA</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
 
+
+
         <!-- End Logo -->
+
 
         <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
@@ -26,15 +37,19 @@
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
-
+        <div class="card-title"><p>Welcome, @userName @userLname</p></div>
         <nav class="header-nav ms-auto">
+
             <ul class="d-flex align-items-center">
 
                 <li class="nav-item d-block d-lg-none">
                     <a class="nav-link nav-icon search-bar-toggle " href="#">
                         <i class="bi bi-search"></i>
                     </a>
-                </li><!-- End Search Icon-->
+                </li>
+
+                <!--Greet-->
+                <!-- End Search Icon-->
 
                 <li class="nav-item dropdown">
 
@@ -146,22 +161,25 @@
 
     </header><!-- End Header -->
     <!-- ======= Sidebar ======= -->
+    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <!--<a class="nav-link collapsed" href="dashboard.html"> -->
+                <!-- <a class="nav-link collapsed" href="#"/> -->
                 <a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">
-                    <i class="bi bi-grid"></i><span>Dashboard</span>
+                    <i class="bi bi-grid"></i> <span>Dashboard</span>
                 </a>
+
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <!--<a class="nav-link collapsed" href="profile.html"> -->
-                <a class="nav-link collapsed" asp-area="" asp-page="/Company/Company">
-                    <i class="bi bi-person"></i>   <span>Company Profile</span>
+                <!--<a class="nav-link collapsed" href="profile.html"/>-->
+                <a class="nav-link collapsed" asp-area="" asp-page="/User/ListUser">
+                    <i class="bi bi-person"></i> <span>Company Profile</span>
                 </a>
+
             </li>
 
             <li class="nav-item">
@@ -182,15 +200,16 @@
                 </a>
             </li><!-- End employees Nav -->
 
+
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Client/Client">
+                <a class="nav-link collapsed" asp-area="" asp-page="/Client/ListClient">
                     <i class="bi bi-person-check"></i>
                     <span>Clients</span>
                 </a>
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Vendor/Vendor">
+                <a class="nav-link collapsed" asp-area="" asp-page="Vendor/ListVendor">
                     <i class="bi bi-shop"></i><span>Suppliers</span>
                 </a>
             </li><!-- End employees Nav -->
@@ -210,14 +229,15 @@
 
     </aside><!-- End Sidebar-->
 
+
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Vendor</h1>
+            <h1>Company Profile</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Vendors</li>
+                    <li class="breadcrumb-item active">Company Profile</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -231,57 +251,56 @@
 
 
                             <!--Successs message-->
-                            <!--Add New vendor-->
+                            <!--View employee-->
+                            @if (Model.ApplicationUsers != null && Model.ApplicationUsers.Any())
+                            {
+                                    <table class="table datatable">
+                                        <thead>
+                                            <tr>
 
-                            <form class="row g-3" method="post">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                @if (!string.IsNullOrWhiteSpace(message))
-                                {
-                                    <div class="alert alert-success" role="alert">
-                                        @message
-                                    </div>
-                                }
-
-                                <div class="mb-3">
-                                    <label class="form-label" asp-for="EditVendor.VendorId">VendorId</label>
-                                    <input type="text" asp-for="EditVendor.VendorId" class="form-control" readonly />
-                                    <span asp-validation-for="EditVendor.VendorId" class="text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" asp-for="EditVendor.VendorName">Vendor Name</label>
-                                    <input type="text" asp-for="EditVendor.VendorName" class="form-control" />
-                                    <span asp-validation-for="EditVendor.VendorName" class="text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" asp-for="EditVendor.Email">Email</label>
-                                    <input type="text" asp-for="EditVendor.Email" class="form-control" />
-                                    <span asp-validation-for="EditVendor.Email" class="text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" asp-for="EditVendor.Phone">Phone</label>
-                                    <input type="text" pattern="[0][0-9]{9}" maxlength="10" asp-for="EditVendor.Phone" class="form-control" />
-                                    <span asp-validation-for="EditVendor.Phone" class="text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" asp-for="EditVendor.Address">Address</label>
-                                    <input type="text" asp-for="EditVendor.Address" class="form-control" />
-                                    <span asp-validation-for="EditVendor.Address" class="text-danger"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" asp-for="EditVendor.City">City</label>
-                                    <input type="text" asp-for="EditVendor.City" class="form-control" />
-                                    <span asp-validation-for="EditVendor.City" class="text-danger"></span>
-                                </div>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary" asp-page-handler="Update">Update</button>
-
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this supplier ?')" asp-page-handler="Delete">Delete</button>
-                                </div>
+                                                <th>Company Name</th>                                            
+                                                <th>Address</th>
+                                                <th>City</th>
 
 
 
-                            </form>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var applicationuser in Model.ApplicationUsers)
+                                        {
+                                                    <tr>
+
+                                                        <td>@applicationuser.CompanyName</td>
+                                                        <td>@applicationuser.Address</td>
+                                                        <td>@applicationuser.City</td>
+
+
+                                                        <td>
+                                                            <a href="/User/EditUser/@applicationuser.Id" class="btn btn-dark">
+                                                                Edit
+                                                            </a>
+                                                        </td>
+                                                        <td>
+
+                                                        </td>
+                                                    </tr>
+                                        }
+
+                                        </tbody>
+
+                                    </table>
+                            }
+                            else
+                            {
+                                    <p>No User found!</p>
+                            }
+
+
+
+
+
+
                             <!-- End floating Labels Form -->
 
                         </div>
@@ -293,5 +312,10 @@
                 </div>
             </div>
         </section>
-    </main>
+
+    </main><!-- End #main -->
+
 </body>
+
+
+

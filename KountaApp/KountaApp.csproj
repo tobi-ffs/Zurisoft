@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Quota\**" />
+    <Content Remove="Pages\Quota\**" />
+    <EmbeddedResource Remove="Pages\Quota\**" />
+    <None Remove="Pages\Quota\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.20" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
@@ -15,11 +22,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Quota\" />
-    <Folder Include="Pages\Invoice\" />
   </ItemGroup>
 
 </Project>

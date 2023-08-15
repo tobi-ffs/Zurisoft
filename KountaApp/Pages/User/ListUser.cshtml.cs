@@ -3,34 +3,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace KountaApp.Pages.Employee
+namespace KountaApp.Pages.User
 {
-    public class ListEmployeeModel : PageModel
+    public class ListUserModel : PageModel
     {
+
         private readonly KountaDbContext kountaDbContext;
 
-        public List<KountaApp.Areas.Identity.Data.Employee> Employees { get; set; }
+        public List<KountaApp.Areas.Identity.Data.ApplicationUser> ApplicationUsers { get; set; }
 
-        public ListEmployeeModel(KountaDbContext kountaDbContext)
+        public ListUserModel(KountaDbContext kountaDbContext)
         {
             this.kountaDbContext = kountaDbContext;
         }
-
         public void OnGet()
         {
-            // get all Employees
-            Employees = kountaDbContext.Employees.ToList();
+            ApplicationUsers = kountaDbContext.ApplicationUsers.ToList();
 
 
             // Filter based on UserId
             string currentUser = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
-            Employees = kountaDbContext.Employees
-                .Where(x => x.UserId == currentUser)
-                .Include(y => y.ApplicationUsers)
+            ApplicationUsers = kountaDbContext.ApplicationUsers
+                .Where(x => x.Id == currentUser)
                 .ToList();
-
         }
-        
     }
 }
