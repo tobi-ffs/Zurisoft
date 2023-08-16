@@ -646,6 +646,9 @@
                         </div>
                     </div><!-- End Recent Activity -->
                     <!-- Budget Report -->
+          
+
+               
                     <div class="card">
                         <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -715,6 +718,112 @@
                                     });
                                 });
                             </script>
+
+                            <!--Dynamic Data-->
+                            <div id="chart"></div>
+                            <div id="expenseChart"></div>
+                            <div id="incomeChart"></div>
+                            <div id="salaryChart"></div>
+                            @section Scripts
+                            {
+                                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+                                <script type="text/javascript">
+
+                                   /* google.charts.load('current', { 'packages': ['corechart'] });
+                                    google.charts.setOnLoadCallback(drawChart);
+                                    function drawChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=ChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+                                        var data = new google.visualization.DataTable(jsonData);
+                                        var options = {
+                                            'title': 'My Total Expense Spread',
+                                            'width': 600,
+                                            'height': 500
+                                        };
+
+                                        //var chart = new google.visualization.PieChart(document.getElementById('chart'));
+                                        var chart = new google.visualization.BarChart(document.getElementById('chart'));
+
+                                        chart.draw(data, options);
+
+
+                                    } */
+
+                                    google.charts.load('current', { 'packages': ['corechart'] });
+                                    google.charts.setOnLoadCallback(drawAllCharts);
+
+                                    function drawAllCharts() {
+                                        drawExpenseChart();
+                                        drawSalaryChart();
+                                        drawIncomeChart();
+                                    }
+
+                                    function drawExpenseChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=ChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var data = new google.visualization.DataTable(jsonData);
+
+                                        var options = {
+                                            'title': 'My Total Expense Spread',
+                                            'width': 600,
+                                            'height': 500
+                                        };
+
+                                        var chart = new google.visualization.BarChart(document.getElementById('expenseChart'));
+                                        chart.draw(data, options);
+                                    }
+
+                                  
+
+                                    function drawSalaryChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=SalaryChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var data = new google.visualization.DataTable(jsonData);
+
+                                        var options = {
+                                            'title': 'Total Salary PayOut',
+                                            'width': 600,
+                                            'height': 500
+                                        };
+
+                                        var chart = new google.visualization.BarChart(document.getElementById('salaryChart'));
+                                        chart.draw(data, options);
+                                    }
+                                    
+
+                                    function drawIncomeChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=IncomeChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var data = new google.visualization.DataTable(jsonData);
+
+                                        var options = {
+                                            'title': 'My Total Income Spread',
+                                            'width': 600,
+                                            'height': 500
+                                        };
+
+                                        var chart = new google.visualization.BarChart(document.getElementById('incomeChart'));
+                                        chart.draw(data, options);
+                                    }
+                                        
+                                </script>
+                            }
 
                         </div>
                     </div><!-- End Budget Report -->
