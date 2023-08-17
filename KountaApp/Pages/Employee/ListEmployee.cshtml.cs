@@ -31,5 +31,6 @@ namespace KountaApp.Pages.Employee
                 .ToList();
 
         }
+        
     }
 }

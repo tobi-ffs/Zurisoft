@@ -7,6 +7,7 @@ namespace KountaApp.Pages.User
 {
     public class ListUserModel : PageModel
     {
+
         private readonly KountaDbContext kountaDbContext;
 
         public List<KountaApp.Areas.Identity.Data.ApplicationUser> ApplicationUsers { get; set; }

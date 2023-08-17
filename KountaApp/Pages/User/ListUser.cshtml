@@ -210,6 +210,7 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-area="" asp-page="">
+                <a class="nav-link collapsed" asp-area="" asp-page="Vendor/ListVendor">
                     <i class="bi bi-shop"></i><span>Suppliers</span>
                 </a>
             </li><!-- End employees Nav -->
@@ -258,6 +259,7 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
+
                                             <th>Company Name</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
@@ -274,6 +276,7 @@
                                         {
                                             <tr>
                                                 <td>@applicationuser.Id</td>
+
                                                 <td>@applicationuser.CompanyName</td>
                                                 <td>@applicationuser.FirstName</td>
                                                 <td>@applicationuser.LastName</td>
@@ -322,5 +325,6 @@
     </main><!-- End #main -->
 
 </body>
+
 
 
