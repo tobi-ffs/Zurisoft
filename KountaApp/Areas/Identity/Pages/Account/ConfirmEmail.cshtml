@@ -2,7 +2,27 @@
 @model ConfirmEmailModel
 @{
     ViewData["Title"] = "Confirm email";
+    // Retrive user ID and name
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user?.Id;
+    var userName = user?.FirstName;
+    var userLname = user?.LastName;
 }
-
+@using KountaApp.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManger
+@inject UserManager<ApplicationUser> UserManager
 <h1>@ViewData["Title"]</h1>
 <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+
+
+<div class="text-center">
+    <h3 class="display-4">Welcome,</h3>
+    <p></p>
+    <p>The time right now @DateTime.Now</p>
+    <p></p>
+    <p>Hope you're having a good day</p>
+    <p></p>
+    <a type="button" class="btn btn-success" asp-area="Identity" asp-page="/Account/Login">Go to login</a>
+</div>

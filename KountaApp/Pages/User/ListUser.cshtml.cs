@@ -25,7 +25,7 @@ namespace KountaApp.Pages.User
             string currentUser = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
             ApplicationUsers = kountaDbContext.ApplicationUsers
-                .Where(x => x.Id == currentUser)
+                .Where(x => x.Id == currentUser)               
                 .ToList();
         }
     }
