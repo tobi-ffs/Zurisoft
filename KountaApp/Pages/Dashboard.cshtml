@@ -724,6 +724,7 @@
                             <div id="expenseChart"></div>
                             <div id="incomeChart"></div>
                             <div id="salaryChart"></div>
+                            <div id="companyPerformanceChart"></div>
                             @section Scripts
                             {
                                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -757,12 +758,22 @@
                                     google.charts.setOnLoadCallback(drawAllCharts);
 
                                     function drawAllCharts() {
-                                        drawExpenseChart();
-                                        drawSalaryChart();
-                                        drawIncomeChart();
+                                        //drawExpenseChart(); //- barchart
+                                       // drawSalaryChart(); //- barchart
+                                        drawIncomeChart(); //- barchart
+                                        drawSalaryScatterChart();
+                                     //   drawIncomeAreaChart();
+                                      //  drawCompanyPerformanceChart();
+                                      //  drawExpenseColumnChart(); //- column chart
+                                        drawExpensePieChart(); //- piechart
+                                        
+
+
                                     }
 
-                                    function drawExpenseChart() {
+                                    // bar chart
+
+                                 /* function drawExpenseChart() {
                                         var jsonData = $.ajax({
                                             url: "?handler=ChartData",
                                             dataType: "json",
@@ -779,11 +790,57 @@
 
                                         var chart = new google.visualization.BarChart(document.getElementById('expenseChart'));
                                         chart.draw(data, options);
-                                    }
+                                    } */
+
+                                    // piechart
+                                    function drawExpensePieChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=ChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var data = new google.visualization.DataTable(jsonData);
+
+                                        var options = {
+                                            'title': 'My Total Expense Spread',
+                                            'width': 600,
+                                            'height': 500
+                                        };
+
+                                        var chart = new google.visualization.PieChart(document.getElementById('expenseChart'));
+                                        chart.draw(data, options);
+                                    } 
+
+
+                                    // column chart
+                                   /* function drawExpenseColumnChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=ChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var data = new google.visualization.DataTable(jsonData);
+
+                                        var options = {
+                                            title: 'My Total Expense Spread (Column Chart)',
+                                            width: 600,
+                                            height: 500,
+                                            bars: 'vertical', // Specify vertical bars for a column chart
+                                            colors: ['#3366cc'], // Color for the columns
+                                            legend: { position: 'none' } // Hide the legend
+                                        };
+
+                                        var chart = new google.visualization.ColumnChart(document.getElementById('expenseChart'));
+                                        chart.draw(data, options);
+                                    } */
+
+
 
                                   
-
-                                    function drawSalaryChart() {
+                                    // bar chart
+                                   /* function drawSalaryChart() {
                                         var jsonData = $.ajax({
                                             url: "?handler=SalaryChartData",
                                             dataType: "json",
@@ -800,9 +857,9 @@
 
                                         var chart = new google.visualization.BarChart(document.getElementById('salaryChart'));
                                         chart.draw(data, options);
-                                    }
+                                    } */
                                     
-
+                                    // bar chart
                                     function drawIncomeChart() {
                                         var jsonData = $.ajax({
                                             url: "?handler=IncomeChartData",
@@ -820,8 +877,98 @@
 
                                         var chart = new google.visualization.BarChart(document.getElementById('incomeChart'));
                                         chart.draw(data, options);
+                                    } 
+
+                                   function drawSalaryScatterChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=SalaryChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var data = new google.visualization.DataTable(jsonData);
+
+                                        var options = {
+                                            title: 'Salary Scatter Chart',
+                                            width: 600,
+                                            height: 500,
+                                            hAxis: { title: 'Date' },
+                                            vAxis: { title: 'Wage' },
+                                            legend: 'none'
+                                        };
+
+                                        var chart = new google.visualization.ScatterChart(document.getElementById('salaryChart'));
+                                        chart.draw(data, options);
                                     }
-                                        
+
+                                   /* function drawIncomeAreaChart() {
+                                        var jsonData = $.ajax({
+                                            url: "?handler=IncomeChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var data = new google.visualization.DataTable(jsonData);
+
+                                        var options = {
+                                            title: 'Income Area Chart',
+                                            width: 600,
+                                            height: 500,
+                                            hAxis: { title: 'Category' },
+                                            vAxis: { title: 'Amount' },
+                                            legend: 'none',
+                                            isStacked: true, // Area chart option
+                                            areaOpacity: 0.5 // Area chart option
+                                        };
+
+                                        var chart = new google.visualization.AreaChart(document.getElementById('incomeChart'));
+                                        chart.draw(data, options);
+                                    } */
+
+
+
+                                    // company performance - hard code then? - does not work yet
+
+
+                                   /* function drawCompanyPerformanceChart() {
+                                        var expenseData = $.ajax({
+                                            url: "?handler=ChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var incomeData = $.ajax({
+                                            url: "?handler=IncomeChartData",
+                                            dataType: "json",
+                                            async: false
+                                        }).responseText;
+
+                                        var combinedData = transformCompanyData(expenseData, incomeData);
+
+                                        var options = {
+                                            title: 'Company Performance',
+                                            curveType: 'function',
+                                            legend: { position: 'bottom' }
+                                        };
+
+                                        var chart = new google.visualization.LineChart(document.getElementById('companyPerformanceChart'));
+
+                                        chart.draw(combinedData, options);
+                                    }
+
+                                    function transformCompanyData(expenseData, incomeData) {
+                                        var dataTable = new google.visualization.DataTable();
+                                        dataTable.addColumn('string', 'Year');
+                                        dataTable.addColumn('number', 'Expenses');
+                                        dataTable.addColumn('number', 'Income');
+
+                                        // Transform and combine the data from expenseData and incomeData
+                                        // Loop through the data and add rows to dataTable
+                                        // ... your code to transform and populate data here ...
+
+                                        return dataTable;
+                                    } */
+                                       
                                 </script>
                             }
 
