@@ -1,7 +1,16 @@
 ﻿@page
 @model KountaApp.Pages.Invoice.InvoiceModel
 @{
+    // Retrive user ID and name
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user?.Id;
+    var userName = user?.FirstName;
+    var userLname = user?.LastName;
 }
+@using KountaApp.Areas.Identity.Data;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManger
+@inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +19,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Kounta | Company Profile</title>
+    <title>Kounta | Invoice</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -48,17 +57,20 @@
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
-     
+
 
         <div class="d-flex align-items-center justify-content-between">
-            <a asp-area="" asp-page="/Index" class="logo d-flex align-items-center">
+            <a class="logo d-flex align-items-center" asp-area="" asp-page="/Index">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">KOUNTA</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div> 
-        
+        </div>
+
+
+
         <!-- End Logo -->
+
 
         <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
@@ -66,15 +78,19 @@
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
-
+        <div class="card-title"><p>Welcome, @userName @userLname</p></div>
         <nav class="header-nav ms-auto">
+
             <ul class="d-flex align-items-center">
 
                 <li class="nav-item d-block d-lg-none">
                     <a class="nav-link nav-icon search-bar-toggle " href="#">
                         <i class="bi bi-search"></i>
                     </a>
-                </li><!-- End Search Icon-->
+                </li>
+
+                <!--Greet-->
+                <!-- End Search Icon-->
 
                 <li class="nav-item dropdown">
 
@@ -129,13 +145,12 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
 
-                        <span class="d-none d-md-block dropdown-toggle ps-2">User 1</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">Manage Account</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>User 1</h6>
-                            <span>Spaza Shop</span>
+                            <h6>@userName</h6>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -152,7 +167,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Manage/Index">
                                 <i class="bi bi-gear"></i>
                                 <span>Account Settings</span>
                             </a>
@@ -172,7 +187,7 @@
                         </li>
 
                         <li>
-                            <a class ="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Logout">>
+                            <a class="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Logout">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -186,138 +201,119 @@
 
     </header><!-- End Header -->
     <!-- ======= Sidebar ======= -->
+    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <!--<a class="nav-link collapsed" href="dashboard.html"> -->
+                <!-- <a class="nav-link collapsed" href="#"/> -->
                 <a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">
-                <i class="bi bi-grid"></i><span>Dashboard</span>
+                    <i class="bi bi-grid"></i> <span>Dashboard</span>
                 </a>
+
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <!--<a class="nav-link collapsed" href="profile.html"> -->
-                <a class="nav-link collapsed" asp-area="" asp-page="/Company">
-                    <i class="bi bi-person"></i>   <span>Company Profile</span>
+                <!--<a class="nav-link collapsed" href="profile.html"/>-->
+                <a class="nav-link collapsed" asp-area="" asp-page="User/ListUser">
+                    <i class="bi bi-person"></i> <span>Company Profile</span>
                 </a>
+
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Invoice/Invoice">
+                <a class="nav-link collapsed" href="#">
                     <i class="bi bi-journal-text"></i><span>Invoices</span>
                 </a>
             </li><!-- End Invoices Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="" asp-page="Transaction/Transaction">
                     <i class="bi bi-cash-coin"></i><span>Transactions</span>
                 </a>
             </li><!-- End Invoices Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Employee/AddEmployee">
+                <a class="nav-link collapsed" asp-area="" asp-page="Employee/Employee">
                     <i class="bi bi-people"></i><span>Employees</span>
                 </a>
             </li><!-- End employees Nav -->
 
+
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Client/Client">
+                <a class="nav-link collapsed" asp-area="" asp-page="Client/Client">
                     <i class="bi bi-person-check"></i>
                     <span>Clients</span>
                 </a>
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-shop"></i><span>Vendors</span>
+                <a class="nav-link collapsed" asp-area="" asp-page="Vendor/Vendor">
+                    <i class="bi bi-shop"></i><span>Suppliers</span>
                 </a>
             </li><!-- End employees Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="" asp-page="Product/Product">
                     <i class="bi bi-bar-chart"></i><span>Inventory</span>
                 </a>
             </li><!-- End Invoices Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#"/>
-                    <i class="bi bi-journal-text"></i><span>Financial Reports</span>
+                <a class="nav-link collapsed" href="#" />
+                <i class="bi bi-journal-text"></i><span>Financial Reports</span>
             </li><!--- End Charts Nav -->
 
         </ul>
 
     </aside><!-- End Sidebar-->
-    
-    <style>
-
-        screen {
-            
-        }
-        print
-        {
-            .btn
-            {
-                display: none; 
-            }
-            .NoPrint
-            {
-                display: none; 
-            }
-
-            .form-control
-            { 
-                border: 0px;
-            }
-
-            .input-group-text
-            {
-                border: 0px;
-                background-color: white;
-            }
-        }
-
-
-
-    </style>
-
 
     <script>
-        function GetPrint()
-        {
+        function GetPrint() {
             window.print();
         }
 
     </script>
 
     <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Invoices</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Invoices</li>
+
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
         <div class="container">
             <div class="card">
                 <div class="card-header text-center">
-                  <h4>INVOICE</h4>
+                    <h4>INVOICE</h4>
                 </div>
                 <div class="card-body">
-                    
+
                     <div class="row">
                         <div class="col-8">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Customer</span>
                                 <input type="text" class="form-control" placeholder="Customer" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
-            
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Address</span>
                                 <input type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
-            
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">City</span>
                                 <input type="text" class="form-control" placeholder="City" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="col-4">
-                            
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Inv.No</span>
                                 <input type="text" class="form-control" placeholder="Inv.No" aria-label="Username" aria-describedby="basic-addon1">
@@ -332,54 +328,52 @@
 
                     <table class="table table-bordered">
                         <thead class="table-dark">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col" class="text-end" >Description</th>
-                            <th scope="col" class="text-end" >Qty</th>
-                            <th scope="col" class="text-end" >Rate</th>
-                            <th scope="col" class="text-end" >Amount</th>
-                            <th scope="col" class="NoPrint"></th>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" class="text-end">Description</th>
+                                <th scope="col" class="text-end">Qty</th>
+                                <th scope="col" class="text-end">Rate</th>
+                                <th scope="col" class="text-end">Amount</th>
+                                <th scope="col" class="NoPrint"></th>
 
-                          </tr>
+                            </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td><input type="text" class="form-control" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
-                          </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
+                            </tr>
 
-                          <tr>
-                            <th scope="row">2</th>
-                            <td><input type="text" class="form-control" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
-                          </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
+                            </tr>
 
-                          <tr>
-                            <th scope="row">2</th>
-                            <td><input type="text" class="form-control" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td><input type="number" class="form-control text-end" ></td>
-                            <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
-                          </tr>
-                         
+                            <tr>
+                                <th scope="row">2</th>
+                                <td><input type="text" class="form-control"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td><input type="number" class="form-control text-end"></td>
+                                <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
+                            </tr>
+
                         </tbody>
-                      </table>
+                    </table>
 
                     <div class="row">
                         <div class="col-8">
 
                             <button type="button" class="btn btn-primary" onclick="GetPrint()">Print</button>
-                            
-                           <a></a>
-                            
+                            <button type="button" class="btn btn-primary">Save</button>
 
                         </div>
                         <div class="col-4">
@@ -397,21 +391,20 @@
                                 <span class="input-group-text" id="basic-addon1">NET Amt</span>
                                 <input type="number" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
-                            <div class="text-center">
-                                <a class="btn btn-primary" asp-area="" asp-page="/Invoice/ListInvoice">View Invoices</a>
-                            </div>
                         </div>
                     </div>
-                 
+
                 </div>
-              </div>
-              
+            </div>
+
         </div>
-</body>
+       </main>
+    </body>
+</html>
 
 
-        
-       
 
 
-        
+
+
+
