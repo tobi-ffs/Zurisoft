@@ -158,49 +158,146 @@
                 </a>
             </li><!-- End Dashboard Nav -->
 
+
             <li class="nav-item">
-                <!--<a class="nav-link collapsed" href="profile.html"> -->
-                <a class="nav-link collapsed" asp-area="" asp-page="/Company/Company">
-                    <i class="bi bi-person"></i>   <span>Company Profile</span>
+                <a class="nav-link collapsed" data-bs-target="#company-profile-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person"></i><span>Company Profile</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
+                <ul id="company-profile-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/User/ListUser>
+                            <i class="bi bi-circle"></i><span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/User>
+                            <i class="bi bi-circle"></i><span>Create Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/User/EditUser>
+                            <i class="bi bi-circle"></i><span>Edit Profile</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-journal-text"></i><span>Invoices</span>
+                <a class="nav-link collapsed" data-bs-target="#invoices-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Invoices</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li><!-- End Invoices Nav -->
+                <ul id="invoices-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/Invoices/ListInvoice>
+                            <i class="bi bi-circle"></i><span>Invoices</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Invoices/Invoice>
+                            <i class="bi bi-circle"></i><span>New Invoice</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#">
                     <i class="bi bi-cash-coin"></i><span>Transactions</span>
                 </a>
-            </li><!-- End Invoices Nav -->
+            </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Employee/AddEmployee">
-                    <i class="bi bi-people"></i><span>Employees</span>
+                <a class="nav-link collapsed" data-bs-target="#employees-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-people"></i><span>Employees</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li><!-- End employees Nav -->
+                <ul id="employees-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/Employees/ListEmployees>
+                            <i class="bi bi-circle"></i><span>My Employees</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Employee/AddEmployee>
+                            <i class="bi bi-circle"></i><span>Add Employee</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Employee/EditEmployee>
+                            <i class="bi bi-circle"></i><span>Edit Employees</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Forms Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Client/Client">
-                    <i class="bi bi-person-check"></i>
-                    <span>Clients</span>
+                <a class="nav-link collapsed" data-bs-target="#clients-nav" data-bs-toggle="collapse" href="">
+                    <i class="bi bi-person-check"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li><!-- End Contact Page Nav -->
+                <ul id="clients-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/Client/ListClients>
+                            <i class="bi bi-circle"></i><span>My Clients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Client/Client>
+                            <i class="bi bi-circle"></i><span>Add Client</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Client/EditClient>
+                            <i class="bi bi-circle"></i><span>Edit Clients</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#vendors-nav" data-bs-toggle="collapse" href="">
+                    <i class="bi bi-shop"></i><span>Vendors</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="vendors-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/Vendor/ListVendor>
+                            <i class="bi bi-circle"></i><span>Vendors</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Vendor/Vendor>
+                            <i class="bi bi-circle"></i><span>Add Vendor</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Vendor/EditVendor>
+                            <i class="bi bi-circle"></i><span>Edit Vendors</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Vendor/Vendor">
-                    <i class="bi bi-shop"></i><span>Suppliers</span>
+                <a class="nav-link collapsed" data-bs-target="#inventory-nav" data-bs-toggle="collapse" href="">
+                    <i class="bi bi-bar-chart"></i><span>Inventory</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li><!-- End employees Nav -->
+                <ul id="inventory-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/Product/ListProduct>
+                            <i class="bi bi-circle"></i><span>Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Product/Product>
+                            <i class="bi bi-circle"></i><span>Add Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Product/EditProduct>
+                            <i class="bi bi-circle"></i><span>Edit Products</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="" asp-page="/Product/Product">
-                    <i class="bi bi-bar-chart"></i><span>Inventory</span>
-                </a>
-            </li><!-- End Invoices Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" />
