@@ -155,7 +155,7 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" asp-area="" asp-page="/User/ListUser">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
                             </a>
@@ -221,16 +221,6 @@
                             <i class="bi bi-circle"></i><span>My Profile</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/User>
-                            <i class="bi bi-circle"></i><span>Create Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/User/EditUser">
-                            <i class="bi bi-circle"></i><span>Edit Profile</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
 
@@ -247,11 +237,6 @@
                     <li>
                         <a asp-area="" asp-page="/Product/Product">
                             <i class="bi bi-circle"></i><span>Add Product</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/EditProduct">
-                            <i class="bi bi-circle"></i><span>Edit Products</span>
                         </a>
                     </li>
                 </ul>
@@ -272,11 +257,6 @@
                             <i class="bi bi-circle"></i><span>Add Client</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/Client/EditClient">
-                            <i class="bi bi-circle"></i><span>Edit Clients</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
 
@@ -293,21 +273,6 @@
                     <li>
                         <a asp-area="" asp-page="/Employee/AddEmployee">
                             <i class="bi bi-circle"></i><span>Add Employee</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Employee/EditEmployee">
-                            <i class="bi bi-circle"></i><span>Edit Employees</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Employee/Pay">
-                            <i class="bi bi-circle"></i><span>Pay Employee</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Employee/EditSalary">
-                            <i class="bi bi-circle"></i><span>Edit Salaries</span>
                         </a>
                     </li>
                     <li>
@@ -333,11 +298,7 @@
                             <i class="bi bi-circle"></i><span>Add Vendor</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/Vendor/EditVendor">
-                            <i class="bi bi-circle"></i><span>Edit Vendors</span>
-                        </a>
-                    </li>
+                 
                 </ul>
             </li>
 
@@ -352,7 +313,7 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-page="/Invoices/Invoice">
+                        <a asp-area="" asp-page="/Invoice/Invoice">
                             <i class="bi bi-circle"></i><span>New Invoice</span>
                         </a>
                     </li>
@@ -389,43 +350,10 @@
                             <i class="bi bi-circle"></i><span>New Expense</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/Transaction/EditIncome">
-                            <i class="bi bi-circle"></i><span>Edit Income</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Transaction/EditExpense">
-                            <i class="bi bi-circle"></i><span>Edit Expense</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
 
             <!-- End Forms Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#inventory-nav" data-bs-toggle="collapse" href="">
-                    <i class="bi bi-bar-chart"></i><span>Inventory</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="inventory-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a asp-area="" asp-page="/Product/ListProduct">
-                            <i class="bi bi-circle"></i><span>Products</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/Product">
-                            <i class="bi bi-circle"></i><span>Add Product</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/EditProduct">
-                            <i class="bi bi-circle"></i><span>Edit Products</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
 
 
             <li class="nav-item">
