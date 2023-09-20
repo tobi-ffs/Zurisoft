@@ -50,7 +50,7 @@
                                         <p>
                                             @foreach (var provider in Model.ExternalLogins!)
                                             {
-                                                <button type="submit" class="btn btn-danger" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">Sign in with @provider.DisplayName+</button>
+                                                    <button type="submit" class="custom-btn btn-3" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName+</button>
                                               
                                             }
                                         </p>
