@@ -17,6 +17,8 @@ namespace KountaApp.Areas.Identity.Data
 
         public string? Address { get; set; }
 
+        public DateTime? StartDate { get; set; }
+
         // Add FKs
 
         public string? UserId { get; set; }

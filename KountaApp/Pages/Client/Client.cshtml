@@ -448,6 +448,13 @@
                                     <span asp-validation-for="Phone" class="text-danger"></span>
                                 </div>
                                 <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-3 col-form-label" for="floatingPosition">Started On</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input type="datetime-local" class="form-control" id="floatingName" asp-for="StartDate">
+                                    </div>
+                                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                                </div>
+                                <div class="row mb-3">
                                     <label class="col-md-4 col-lg-3 col-form-label" for="floatingAddress">Address</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input type="text" class="form-control" id="floatingName" asp-for="Address">

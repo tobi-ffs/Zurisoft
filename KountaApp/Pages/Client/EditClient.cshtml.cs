@@ -35,6 +35,7 @@ namespace KountaApp.Pages.Client
                     Email = client.Email,
                     Phone = client.Phone,
                     Address = client.Address,
+                    StartDate = client.StartDate,
                     // Include the fks
                     UserId = client.UserId
                 };

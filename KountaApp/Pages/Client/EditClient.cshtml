@@ -387,6 +387,12 @@
                                     <input type="text" asp-for="EditClient.UserId" class="form-control" readonly />
                                     <span asp-validation-for="EditClient.UserId" class="text-danger"></span>
                                 </div>
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="EditClient.UserId">Started On</label>
+                                    <input type="text" asp-for="EditClient.StartDate" class="form-control" readonly />
+                                    <span asp-validation-for="EditClient.StartDate" class="text-danger"></span>
+                                </div>
+                            
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary" asp-page-handler="Update">Update</button>
