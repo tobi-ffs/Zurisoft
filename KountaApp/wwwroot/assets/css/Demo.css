@@ -5,6 +5,8 @@ body {
     background: #e0e5ec;
 }
 
+
+/*Buttons*/
 h1 {
     position: relative;
     text-align: center;
@@ -867,3 +869,6 @@ button {
     .btn-16:active {
         top: 2px;
     }
+
+
+
