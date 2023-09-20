@@ -78,7 +78,7 @@
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
-        <div class="card-title"><p>Welcome, @userName @userLname</p></div>
+        <div class="card-title"><p class="card-title span">@userName @userLname</p></div>
         <nav class="header-nav ms-auto">
 
             <ul class="d-flex align-items-center">
@@ -395,10 +395,18 @@
 
                     <div class="row">
                         <div class="col-8">
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Customer</span>
-                                <input type="text" class="form-control" placeholder="Customer" aria-label="Username" aria-describedby="basic-addon1">
+                                <select class="form-select" id="categoryDropdown" name="Customer" aria-label="Customer" aria-describedby="basic-addon1">
+                                    <option value="">-- Select a Customer --</option>
+                                    @foreach (var customer in Model.Customers)
+                                    {
+                                        <option value="@customer">@customer</option>
+                                    }
+                                </select>
                             </div>
+                          
 
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">Address</span>
