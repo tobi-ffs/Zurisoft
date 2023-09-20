@@ -35,6 +35,11 @@ namespace KountaApp.Pages.Client
         public string? Address { get; set; }
 
 
+        [Required]
+        [BindProperty]
+        public DateTime? StartDate { get; set; }
+
+
         public ClientModel(KountaDbContext kountaDbContext, UserManager<ApplicationUser> userManager)
         {
             this.kountaDbContext = kountaDbContext;
@@ -75,6 +80,7 @@ namespace KountaApp.Pages.Client
                     Email = Email,
                     Phone = Phone,
                     Address = Address,
+                    StartDate = StartDate,
                     UserId = user.Id
                 };
                 kountaDbContext.Add(client);

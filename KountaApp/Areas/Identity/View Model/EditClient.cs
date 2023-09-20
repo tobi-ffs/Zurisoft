@@ -17,6 +17,8 @@ namespace KountaApp.Areas.Identity.View_Model
 
         public string? Address { get; set; }
 
+        public DateTime? StartDate { get; set; }
+
         public string? UserId { get; set; }
         public ApplicationUser? ApplicationUsers { get; set; } //Used in relationship configuration in the DbContext
     }
