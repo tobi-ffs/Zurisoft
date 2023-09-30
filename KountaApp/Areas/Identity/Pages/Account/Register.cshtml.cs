@@ -181,7 +181,7 @@ namespace KountaApp.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         //$"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-                        $"Your account has been successfully registered. Please click <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>here</a> to log in.");
+                        $"Your account has been successfully registered. Please click <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>here</a> to confirm your email.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {

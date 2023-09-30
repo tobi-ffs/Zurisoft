@@ -22,14 +22,13 @@
 
                         <div class="d-flex justify-content-center py-1">
                             <a class="logo d-flex align-items-center w-auto" asp-page="/Index">
-                                <img src="~/assets/img/logo1.png" alt="">
-                                <span class="d-none d-lg-block">KOUNTA</span>
+                              <!--  <img src="~/assets/img/logo1.png" alt="">
+                                <span class="d-none d-lg-block">KOUNTA</span> -->
                             </a>
                         </div><!-- End Logo -->
 
                         <div>
-
-                            <h5 class="card-title text-center pb-0 fs-4">Use another service to log in.</h5>
+                            <div>  <p style="font-size:large" class="card-title">Use another service to log in.</p></div>
                         <hr />
                         @{
                             if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -50,7 +49,7 @@
                                         <p>
                                             @foreach (var provider in Model.ExternalLogins!)
                                             {
-                                                    <button type="submit" class="custom-btn btn-3" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName+</button>
+                                                    <button type="submit" class="custom-btn btn-16" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName+</button>
                                               
                                             }
                                         </p>
