@@ -221,14 +221,17 @@
                             <i class="bi bi-circle"></i><span>My Profile</span>
                         </a>
                     </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#chatbot-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-chat-left-text"></i><span>Smart Data</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="chatbot-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a asp-area="" asp-page="/User>
-                            <i class="bi bi-circle"></i><span>Create Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/User/EditUser">
-                            <i class="bi bi-circle"></i><span>Edit Profile</span>
+                        <a asp-area="" asp-page="/Chatbot/Chatbot">
+                            <i class="bi bi-circle"></i><span>Chatbot</span>
                         </a>
                     </li>
                 </ul>
@@ -249,11 +252,6 @@
                             <i class="bi bi-circle"></i><span>Add Product</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/EditProduct">
-                            <i class="bi bi-circle"></i><span>Edit Products</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
 
@@ -272,11 +270,6 @@
                             <i class="bi bi-circle"></i><span>Add Client</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/Client/EditClient">
-                            <i class="bi bi-circle"></i><span>Edit Clients</span>
-                        </a>
-                    </li>
                 </ul>
             </li>
 
@@ -291,23 +284,8 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-page="/Employee/AddEmployee">
+                        <a asp-area="" asp-page="/Employee/Employee">
                             <i class="bi bi-circle"></i><span>Add Employee</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Employee/EditEmployee">
-                            <i class="bi bi-circle"></i><span>Edit Employees</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Employee/Pay">
-                            <i class="bi bi-circle"></i><span>Pay Employee</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Employee/EditSalary">
-                            <i class="bi bi-circle"></i><span>Edit Salaries</span>
                         </a>
                     </li>
                     <li>
@@ -333,17 +311,13 @@
                             <i class="bi bi-circle"></i><span>Add Vendor</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/Vendor/EditVendor">
-                            <i class="bi bi-circle"></i><span>Edit Vendors</span>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#invoices-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-journal-text"></i><span>Invoices</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-receipt-cutoff"></i><span>Invoices</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="invoices-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
@@ -352,7 +326,7 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-page="/Invoices/Invoice">
+                        <a asp-area="" asp-page="/Invoice/Invoice">
                             <i class="bi bi-circle"></i><span>New Invoice</span>
                         </a>
                     </li>
@@ -389,43 +363,12 @@
                             <i class="bi bi-circle"></i><span>New Expense</span>
                         </a>
                     </li>
-                    <li>
-                        <a asp-area="" asp-page="/Transaction/EditIncome">
-                            <i class="bi bi-circle"></i><span>Edit Income</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Transaction/EditExpense">
-                            <i class="bi bi-circle"></i><span>Edit Expense</span>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
 
             <!-- End Forms Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#inventory-nav" data-bs-toggle="collapse" href="">
-                    <i class="bi bi-bar-chart"></i><span>Inventory</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="inventory-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a asp-area="" asp-page="/Product/ListProduct">
-                            <i class="bi bi-circle"></i><span>Products</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/Product">
-                            <i class="bi bi-circle"></i><span>Add Product</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/EditProduct">
-                            <i class="bi bi-circle"></i><span>Edit Products</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
 
 
             <li class="nav-item">
@@ -440,18 +383,18 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Income</h1>
+            <h1>Expense</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Income</li>
+                    <li class="breadcrumb-item active">Add Expense</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <section class="section">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">
@@ -465,12 +408,12 @@
 
 
 
-                                <div class="text-center">
-                                    <a class="btn btn-primary" asp-area="" asp-page="/Transaction/ListExpense">My Expenses</a>
+                                <div 
+                                    
                                 </div>
 
 
-                                <p>User Id : @userId</p>
+                                <p></p>
 
 
 
@@ -481,24 +424,17 @@
                                 </div>
 
                                 <div class="row mb-3">
-                                    <label class="col-md-4 col-lg-3 col-form-label" for="floatingPosition">Amount</label>
+                                    <label class="col-md-4 col-lg-3 col-form-label" for="floatingPosition">Category</label>
                                     <div class="col-md-8 col-lg-9">
-                                        <input type="number" class="form-control" id="floatingName" asp-for="Amount">
+                                        <select asp-for="Category" class="form-control" required>
+                                            @foreach (var category in Model.categories)
+                                            {
+                                                <option value="@category">@category</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="Category" class="text-danger" i></span>
                                     </div>
-                                    <span asp-validation-for="Amount" class="text-danger"></span>
                                 </div>
-
-                                <div class="row mb-3">
-                                    <select asp-for="Category" class="form-control" required>
-                                        <option value="">-- Select Category --</option>
-                                        @foreach (var category in Model.categories)
-                                        {
-                                            <option value="@category">@category</option>
-                                        }
-                                    </select>
-                                    <span asp-validation-for="Category" class="text-danger"></span>
-                                </div>
-
 
                                 <div class="row mb-3">
                                     <label class="col-md-4 col-lg-3 col-form-label" for="floatingPosition">Description</label>
@@ -508,13 +444,20 @@
                                     <span asp-validation-for="Description" class="text-danger"></span>
                                 </div>
 
-
                                 <div class="row mb-3">
                                     <label class="col-md-4 col-lg-3 col-form-label" for="floatingPosition">Date</label>
                                     <div class="col-md-8 col-lg-9">
                                         <input type="datetime-local" class="form-control" id="floatingName" asp-for="Date">
                                     </div>
                                     <span asp-validation-for="Date" class="text-danger"></span>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-lg-3 col-form-label" for="floatingPosition">Amount</label>
+                                    <div class="col-md-8 col-lg-9">
+                                        <input type="number" class="form-control" id="floatingName" asp-for="Amount">
+                                    </div>
+                                    <span asp-validation-for="Amount" class="text-danger"></span>
                                 </div>
 
 

@@ -222,7 +222,19 @@
                             <i class="bi bi-circle"></i><span>My Profile</span>
                         </a>
                     </li>
-             
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#chatbot-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-chat-left-text"></i><span>Smart Data</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="chatbot-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/Chatbot/Chatbot">
+                            <i class="bi bi-circle"></i><span>Chatbot</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 
@@ -241,7 +253,6 @@
                             <i class="bi bi-circle"></i><span>Add Product</span>
                         </a>
                     </li>
-                
                 </ul>
             </li>
 
@@ -260,7 +271,6 @@
                             <i class="bi bi-circle"></i><span>Add Client</span>
                         </a>
                     </li>
-              
                 </ul>
             </li>
 
@@ -279,7 +289,6 @@
                             <i class="bi bi-circle"></i><span>Add Employee</span>
                         </a>
                     </li>
-                   
                     <li>
                         <a asp-area="" asp-page="/Employee/Payslip">
                             <i class="bi bi-circle"></i><span>Payslips</span>
@@ -303,13 +312,13 @@
                             <i class="bi bi-circle"></i><span>Add Vendor</span>
                         </a>
                     </li>
-               
+
                 </ul>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#invoices-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-journal-text"></i><span>Invoices</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-receipt-cutoff"></i><span>Invoices</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="invoices-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
@@ -355,7 +364,7 @@
                             <i class="bi bi-circle"></i><span>New Expense</span>
                         </a>
                     </li>
-                 
+
                 </ul>
             </li>
 
@@ -375,29 +384,24 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Clients</h1>
+            <h1>Employees</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Clients</li>
+                    <li class="breadcrumb-item active">Pay Employee</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <section class="section">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">
 
 
-                            <!--Successs message-->
-                            <!--View Client button-->
-
-                            <div class="text-center">
-                                <a class="btn btn-primary" asp-area="" asp-page="/Employee/PaySlip">View Payslip</a>
-                            </div>
+                            
 
                             <!--Add New Client-->
 
@@ -407,7 +411,7 @@
 
 
 
-                                <p>User Id : @userId</p>
+                                <p></p>
 
 
 

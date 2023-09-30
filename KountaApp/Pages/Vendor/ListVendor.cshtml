@@ -186,12 +186,19 @@
                             <i class="bi bi-circle"></i><span>My Profile</span>
                         </a>
                     </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#chatbot-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-chat-left-text"></i><span>Smart Data</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="chatbot-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a asp-area="" asp-page="/User>
-                            <i class="bi bi-circle"></i><span>Create Profile</span>
+                        <a asp-area="" asp-page="/Chatbot/Chatbot">
+                            <i class="bi bi-circle"></i><span>Chatbot</span>
                         </a>
                     </li>
-             
                 </ul>
             </li>
 
@@ -210,7 +217,6 @@
                             <i class="bi bi-circle"></i><span>Add Product</span>
                         </a>
                     </li>
-                   
                 </ul>
             </li>
 
@@ -229,7 +235,6 @@
                             <i class="bi bi-circle"></i><span>Add Client</span>
                         </a>
                     </li>
-                   
                 </ul>
             </li>
 
@@ -248,7 +253,6 @@
                             <i class="bi bi-circle"></i><span>Add Employee</span>
                         </a>
                     </li>
-                   
                     <li>
                         <a asp-area="" asp-page="/Employee/Payslip">
                             <i class="bi bi-circle"></i><span>Payslips</span>
@@ -272,13 +276,13 @@
                             <i class="bi bi-circle"></i><span>Add Vendor</span>
                         </a>
                     </li>
-                    
+
                 </ul>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#invoices-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-journal-text"></i><span>Invoices</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-receipt-cutoff"></i><span>Invoices</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="invoices-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
@@ -324,34 +328,12 @@
                             <i class="bi bi-circle"></i><span>New Expense</span>
                         </a>
                     </li>
-                   
+
                 </ul>
             </li>
 
             <!-- End Forms Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#inventory-nav" data-bs-toggle="collapse" href="">
-                    <i class="bi bi-bar-chart"></i><span>Inventory</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="inventory-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a asp-area="" asp-page="/Product/ListProduct">
-                            <i class="bi bi-circle"></i><span>Products</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/Product">
-                            <i class="bi bi-circle"></i><span>Add Product</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-page="/Product/EditProduct">
-                            <i class="bi bi-circle"></i><span>Edit Products</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
 
 
             <li class="nav-item">
@@ -367,18 +349,18 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Vendor</h1>
+            <h1>Vendors</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="nav-link collapsed" asp-area="" asp-page="/Dashboard">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Vendor</li>
+                    <li class="breadcrumb-item active">My Vendors</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <section class="section">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">
@@ -388,41 +370,45 @@
                             <!--View employee-->
                             @if (Model.Vendors != null && Model.Vendors.Any())
                             {
-                                <table class="table datatable">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Company Name</th>
-                                            <th>Vendor Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Address</th>
-                                            <th>City</th>
-                                            <th> </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var vendor in Model.Vendors)
-                                        {
-                                            <tr>
-                                                <td>@vendor.VendorId</td>
-                                                <td>@vendor.ApplicationUsers?.CompanyName</td>
-                                                <td>@vendor.VendorName</td>
-                                                <td>@vendor.Email</td>
-                                                <td>@vendor.Phone</td>
-                                                <td>@vendor.Address</td>
-                                                <td>@vendor.City</td>
-                                                <td>
-                                                    <a href="/Vendor/EditVendor/@vendor.VendorId" class="btn btn-dark">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        }
+                                <div class=" row">
+                                    <div class="col-12">
+                                        <table class="table table-striped table-hover mt-3 text-center table-bordered ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Company Name</th>
+                                                    <th>Vendor Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Address</th>
+                                                    <th>City</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var vendor in Model.Vendors)
+                                                {
+                                                    <tr>
+                                                        <td>@vendor.VendorId</td>
+                                                        <td>@vendor.ApplicationUsers?.CompanyName</td>
+                                                        <td>@vendor.VendorName</td>
+                                                        <td>@vendor.Email</td>
+                                                        <td>@vendor.Phone</td>
+                                                        <td>@vendor.Address</td>
+                                                        <td>@vendor.City</td>
+                                                        <td>
+                                                            <a href="/Vendor/EditVendor/@vendor.VendorId" class="btn btn-dark btn-sm" title="Edit"><i class="bi bi-pencil-square"></i>
 
-                                    </tbody>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
 
-                                </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
                             }
                             else
                             {
