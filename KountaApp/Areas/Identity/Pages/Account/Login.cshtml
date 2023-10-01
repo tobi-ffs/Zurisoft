@@ -11,7 +11,7 @@
 @inject UserManager<ApplicationUser> UserManager
 
 
-<main>
+<main style=" background: linear-gradient(5deg, #37517E,#FFFFFF )">
 
     <div class="container">
 
@@ -27,38 +27,7 @@
                             </a>
                         </div><!-- End Logo -->
 
-                        <div>
-                            <div>  <p style="font-size:large" class="card-title">Use another service to log in.</p></div>
-                        <hr />
-                        @{
-                            if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                            {
-                                <div>
-                                    <p>
-                                        There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
-                                            article
-                                            about setting up this ASP.NET application to support logging in via external services
-                                        </a>.
-                                    </p>
-                                </div>
-                            }
-                            else
-                            {
-                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                    <div class="text-center">
-                                        <p>
-                                            @foreach (var provider in Model.ExternalLogins!)
-                                            {
-                                                    <button type="submit" class="custom-btn btn-16" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName+</button>
-                                              
-                                            }
-                                        </p>
-                                    </div>
-                                </form>
-                            }
-                        }
-                        </div>
-
+           
                     
                         <div class="card mb-3">
 
@@ -107,18 +76,51 @@
                                         <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
                                     </div>
 
-                                    <div>
-                                        <p>
-                                            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                                        </p>
-                                        <p>
-                                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                                        </p>
-                                        <p>
-                                            <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                                        </p>
-                                    </div>
                                 </form>
+
+                                <div>
+                                    <div>  <p style="font-size:large" class="card-title">- Or Sign in with -</p></div>
+
+                                    @{
+                                        if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                                        {
+                                            <div>
+                                                <p>
+                                                    There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+                                                        article
+                                                        about setting up this ASP.NET application to support logging in via external services
+                                                    </a>.
+                                                </p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                                <div class="text-center">
+                                                    <p>
+                                                        @foreach (var provider in Model.ExternalLogins!)
+                                                        {
+                                                            <button type="submit" class="w-100 btn btn-lg btn btn-light" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName+</button>
+
+                                                        }
+                                                    </p>
+                                                </div>
+
+                                                <div>
+                                                    <p>
+                                                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                                                    </p>
+                                                    <p>
+                                                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                                                    </p>
+                                                    <p>
+                                                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                                                    </p>
+                                                </div>
+                                            </form>
+                                        }
+                                    }
+                                </div>
 
                             </div>
                         </div>
