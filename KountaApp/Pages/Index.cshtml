@@ -18,7 +18,7 @@
 
 	<!-- Favicons -->
 	<link href="assets/img/logo_Kounta.png" rel="icon">
-	<link href="assets/img/logo_Kounta.png" rel="apple-touch-icon">
+	<link href="assets/img/logo_Kounta.png" sizes="512x512" rel="apple-touch-icon">
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -31,6 +31,7 @@
 	<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 	<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
 	<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+	<link href="manifest.json" rel="manifest" />
 
 	<!-- Template Main CSS File -->
 	<link href="assets/css/style2.css" rel="stylesheet">
@@ -43,6 +44,7 @@
 		<div class="container d-flex align-items-center">
 			<a asp-area="" asp-page="/Index" class="logo me"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
 			<h1 class="logo me"><a asp-page="/Index">KOUNTA</a></h1>
+			
 
 
 			<nav id="navbar" class="navbar">
@@ -53,6 +55,7 @@
 
 					<li><a class="nav-link scrollto" href="#contact">Contact</a></li>
 					<li><a class="getstarted scrollto" asp-area="Identity" asp-page="/Account/Login">Sign In</a></li>
+					
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>
@@ -70,6 +73,7 @@
 					<h2>Track Expenses, Manage Inventory, Generate Reports And Much More!</h2>
 					<div class="d-flex justify-content-center justify-content-lg-start">
 						<a asp-area="Identity" asp-page="/Account/Register" class="btn-get-started scrollto">Sign Up</a>
+						<button class="btn-get-started" id="install-button">Get the App</button>
 
 					</div>
 				</div>
@@ -326,10 +330,11 @@
 						<h4>Our Social Networks</h4>
 						<p>Get In Touch</p>
 						<div class="social-links mt-3">
-							<a href="https://twitter.com/Kounta_Zurisoft" class="twitter"><i class="bx bxl-twitter"></i></a>
-							<a href="https://www.facebook.com/profile.php?id=61551849270688" class="facebook"><i class="bx bxl-facebook"></i></a>
-							<a href="https://www.instagram.com/kounta_by_zurisoft/" class="instagram"><i class="bx bxl-instagram"></i></a>
-							<a href="https://www.linkedin.com/feed/?trk=homepage-basic_sign-in-submit" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+							<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+							<a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+							<a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+							<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+							<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
 						</div>
 					</div>
 
@@ -356,6 +361,31 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main2.js"></script>
+	<script>
+		const installButton = document.getElementById('install-button');
+
+		installButton.addEventListener('click', async () => {
+		  try {
+			const permission = await Notification.requestPermission();
+			if (permission === 'granted') {
+				console.log('click');
+			  // Permission granted, you can now show notifications
+			    const registration = navigator.serviceWorker.register('/assets/js/service-worker.js');
+				console.log('click');
+			  registration.showNotification('Install this app', {
+				body: 'Add this app to your home screen for a better experience.',
+				icon: '/assets/img/logo_Kounta.png', // Replace with the path to your app's icon
+			  });
+			} else {
+			  // Permission denied or dismissed
+			  console.log('Notification permission denied.');
+			}
+		  } catch (error) {
+			console.error('Error requesting notification permission:', error);
+		  }
+		});
+
+	</script>
 
 </body>
 
