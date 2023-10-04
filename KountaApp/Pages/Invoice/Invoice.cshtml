@@ -374,9 +374,25 @@
 
 
 
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" />
-                <i class="bi bi-journal-text"></i><span>Financial Reports</span>
+                <a class="nav-link collapsed" data-bs-target="#income-nav" data-bs-toggle="collapse" href="">
+                    <i class="bi bi-newspaper"></i><span>Financial Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="income-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-area="" asp-page="/ConsolidatedReport">
+                            <i class="bi bi-circle"></i><span>Income Statement</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-page="/Sale">
+                            <i class="bi bi-circle"></i><span>Sales</span>
+                        </a>
+                    </li>
+                </ul>
+
+
             </li><!--- End Charts Nav -->
 
         </ul>
@@ -460,7 +476,7 @@
 
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id ="invoiceTableBody">
                             <tr>
                                 <th scope="row">1</th>
                                 <td><input type="text" class="form-control"></td>
@@ -469,33 +485,16 @@
                                 <td><input type="number" class="form-control text-end"></td>
                                 <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
                             </tr>
-
-                            <tr>
-                                <th scope="row">2</th>
-                                <td><input type="text" class="form-control"></td>
-                                <td><input type="number" class="form-control text-end"></td>
-                                <td><input type="number" class="form-control text-end"></td>
-                                <td><input type="number" class="form-control text-end"></td>
-                                <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">3</th>
-                                <td><input type="text" class="form-control"></td>
-                                <td><input type="number" class="form-control text-end"></td>
-                                <td><input type="number" class="form-control text-end"></td>
-                                <td><input type="number" class="form-control text-end"></td>
-                                <td class="NoPrint"><button type="button" class="btn btn-danger">x</button></td>
-                            </tr>
-
                         </tbody>
                     </table>
+                   
 
                     <div class="row">
                         <div class="col-8">
-
                             <button type="button" class="btn btn-primary" onclick="GetPrint()">Print</button>
                             <button type="button" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-primary" onclick="addRow()">Add Row</button>
+                        
 
                         </div>
                         <div class="col-4">
@@ -527,7 +526,55 @@
 </html>
 
 
+<script>
+    // Function to add a new row to the invoice table
+    function addRow() {
+        // Get the table body element
+        var tableBody = document.getElementById("invoiceTableBody");
 
+        // Create a new row
+        var newRow = document.createElement("tr");
+
+        // Add cells to the row
+        newRow.innerHTML = `
+            <th scope="row">${tableBody.children.length + 1}</th>
+            <td><input type="text" class="form-control"></td>
+            <td><input type="number" class="form-control text-end"></td>
+            <td><input type="number" class="form-control text-end"></td>
+            <td><input type="number" class="form-control text-end"></td>
+            <td class="NoPrint"><button type="button" class="btn btn-danger" onclick="deleteRow(this)">x</button></td>
+        `;
+
+        // Append the new row to the table body
+        tableBody.appendChild(newRow);
+    }
+
+    // Function to delete a row from the invoice table
+    function deleteRow(button) {
+        // Get the row containing the clicked button
+        var row = button.parentNode.parentNode;
+
+        // Get the table body containing the row
+        var tableBody = row.parentNode;
+
+        // Remove the row from the table
+        tableBody.removeChild(row);
+
+        // Update row numbers after deletion
+        updateRowNumbers();
+    }
+
+    // Function to update row numbers after a row deletion
+    function updateRowNumbers() {
+        var tableBody = document.getElementById("invoiceTableBody");
+
+        // Loop through rows and update the first cell (row number) in each row
+        for (var i = 0; i < tableBody.children.length; i++) {
+            tableBody.children[i].children[0].textContent = i + 1;
+        }
+    }
+
+</script>
 
 
 
