@@ -22,8 +22,8 @@
 
                         <div class="d-flex justify-content-center py-1">
                             <a class="logo d-flex align-items-center w-auto" asp-page="/Index">
-                              <!--  <img src="~/assets/img/logo1.png" alt="">
-                                <span class="d-none d-lg-block">KOUNTA</span> -->
+                                <img src="~/assets/img/logo1.png" alt="">
+                                <span class="d-none d-lg-block">KOUNTA</span>
                             </a>
                         </div><!-- End Logo -->
 
@@ -80,6 +80,7 @@
 
                                 <div>
                                     <div>  <p style="font-size:large" class="card-title">- Or Sign in with -</p></div>
+                          
 
                                     @{
                                         if ((Model.ExternalLogins?.Count ?? 0) == 0)

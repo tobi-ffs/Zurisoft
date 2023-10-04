@@ -12,7 +12,7 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManger
 @inject UserManager<ApplicationUser> UserManager
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+<!--<partial name="_StatusMessage" model="Model.StatusMessage" />-->
 
 
 <!DOCTYPE html>
@@ -62,15 +62,22 @@
     <div class="vedLoader">
         <div id="bm"></div>
     </div>
-
+    <div class="content">
+    <div class="d-flex justify-content-center py-1">
+        <a  class="logo d-flex align-items-center w-auto">
+            <img src="~/assets/img/logo1.png" alt="">
+            <span class="d-none d-lg-block">KOUNTA</span>
+        </a>
+    </div><!-- End Logo -->
     <div class="text-center">
         <h3 class="display-4">Welcome,</h3>
         <p></p>
         <p>The time right now @DateTime.Now</p>
         <p></p>
-        <p>Hope you're having a good day</p>
+        <p>Hope you're having a good day!</p>
         <p></p>
-        <a type="button" class="btn btn-light" asp-area="Identity" asp-page="/Account/Login">Go to login</a>
+            <a type="button" class="btn btn-dark" asp-area="Identity" asp-page="/Account/Login">Go to login</a>
+    </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
