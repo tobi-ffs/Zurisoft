@@ -539,7 +539,7 @@
         };
 
         // Fetch the PDF from your API
-        fetch('http://localhost:5000/api/users/report', requestOptions)
+        fetch('https://pdf-api-zuri.azurewebsites.net/api/pdf/report', requestOptions)
             .then(response => {
                 //console.log(response.blob()
                 return response.blob(); // Convert the response to a Blob
