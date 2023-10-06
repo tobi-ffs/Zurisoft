@@ -65,6 +65,11 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 
 
 
+
+
+
+
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
