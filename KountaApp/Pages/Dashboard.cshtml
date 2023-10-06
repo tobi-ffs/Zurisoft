@@ -429,6 +429,11 @@
                                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                             <i class="bi bi-cart"></i>
                                         </div>
+                                        <div class="ps-3">
+                                            <h6>145</h6>
+                                            <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                                        </div>
 
                                     </div>
                                 </div>
@@ -603,84 +608,47 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Customer</th>
+                                                <th scope="col">Clients</th>
                                                 <th scope="col">Product</th>
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Status</th>
                                             </tr>
                                         </thead>
-
-                                    </table>
-
-                                </div>
-
-                            </div>
-                        </div><!-- End Recent Sales -->
-                        <!-- Top Selling -->
-                        <div class="col-12">
-                            <div class="card top-selling overflow-auto">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body pb-0">
-                                    <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                                    <table class="table table-borderless">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Preview</th>
-                                                <th scope="col">Product</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Sold</th>
-                                                <th scope="col">Revenue</th>
-                                            </tr>
-                                        </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row"><a href="#"><img src="" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold"></a></td>
-                                                <td></td>
-                                                <td class="fw-bold"></td>
-                                                <td></td>
+                                                <th scope="row"><a href="#">#1</a></th>
+                                                <td>Brandon Jacob</td>
+                                                <td><a href="#" class="text-primary">Classic Mens Suits</a></td>
+                                                <td>R5000</td>
+                                                <td><span class="badge bg-success">Approved</span></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"><a href="#"><img src="" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold"></a></td>
-                                                <td></td>
-                                                <td class="fw-bold"></td>
-                                                <td></td>
+                                                <th scope="row"><a href="#">#2</a></th>
+                                                <td>Bridie Kessler</td>
+                                                <td><a href="#" class="text-primary">Leather Messenger Bags</a></td>
+                                                <td>R350</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"><a href="#"><img src="" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold"></a></td>
-                                                <td></td>
-                                                <td class="fw-bold"></td>
-                                                <td></td>
+                                                <th scope="row"><a href="#">#3</a></th>
+                                                <td>Ashleigh Langosh</td>
+                                                <td><a href="#" class="text-primary">Mens Fragrance Collection </a></td>
+                                                <td>R2400</td>
+                                                <td><span class="badge bg-success">Approved</span></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"><a href="#"><img src="" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold"></a></td>
-                                                <td></td>
-                                                <td class="fw-bold"></td>
-                                                <td></td>
+                                                <th scope="row"><a href="#">#4</a></th>
+                                                <td>Angus Grady</td>
+                                                <td><a href="#" class="text-primar">Luxury Neckties</a></td>
+                                                <td>R150</td>
+                                                <td><span class="badge bg-danger">Rejected</span></td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"><a href="#"><img src="" alt=""></a></th>
-                                                <td><a href="#" class="text-primary fw-bold"></a></td>
-                                                <td></td>
-                                                <td class="fw-bold"></td>
-                                                <td></td>
+                                                <th scope="row"><a href="#">#5</a></th>
+                                                <td>Raheem Lehner</td>
+                                                <td><a href="#" class="text-primary">Leather Messenger Bags</a></td>
+                                                <td>R350</td>
+                                                <td><span class="badge bg-success">Approved</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -688,7 +656,99 @@
                                 </div>
 
                             </div>
-                        </div><!-- End Top Selling -->
+                        </div><!-- End Recent Sales -->
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Bar CHart</h5>
+
+                                    <!-- Bar Chart -->
+                                    <canvas id="barChart" style="max-height: 400px;"></canvas>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new Chart(document.querySelector('#barChart'), {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                                    datasets: [{
+                                                        label: 'Bar Chart',
+                                                        data: [65, 59, 80, 81, 56, 55, 40],
+                                                        backgroundColor: [
+                                                            'rgba(255, 99, 132, 0.2)',
+                                                            'rgba(255, 159, 64, 0.2)',
+                                                            'rgba(255, 205, 86, 0.2)',
+                                                            'rgba(75, 192, 192, 0.2)',
+                                                            'rgba(54, 162, 235, 0.2)',
+                                                            'rgba(153, 102, 255, 0.2)',
+                                                            'rgba(201, 203, 207, 0.2)'
+                                                        ],
+                                                        borderColor: [
+                                                            'rgb(255, 99, 132)',
+                                                            'rgb(255, 159, 64)',
+                                                            'rgb(255, 205, 86)',
+                                                            'rgb(75, 192, 192)',
+                                                            'rgb(54, 162, 235)',
+                                                            'rgb(153, 102, 255)',
+                                                            'rgb(201, 203, 207)'
+                                                        ],
+                                                        borderWidth: 1
+                                                    }]
+                                                },
+                                                options: {
+                                                    scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    <!-- End Bar CHart -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pie Chart</h5>
+
+                                    <!-- Pie Chart -->
+                                    <canvas id="pieChart" style="max-height: 400px;"></canvas>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new Chart(document.querySelector('#pieChart'), {
+                                                type: 'pie',
+                                                data: {
+                                                    labels: [
+                                                        'Red',
+                                                        'Blue',
+                                                        'Yellow'
+                                                    ],
+                                                    datasets: [{
+                                                        label: 'My First Dataset',
+                                                        data: [300, 50, 100],
+                                                        backgroundColor: [
+                                                            'rgb(255, 99, 132)',
+                                                            'rgb(54, 162, 235)',
+                                                            'rgb(255, 205, 86)'
+                                                        ],
+                                                        hoverOffset: 4
+                                                    }]
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                    <!-- End Pie CHart -->
+
+                                </div>
+                            </div>
+                        </div>
+
+           
 
                     </div>
                 </div><!-- End Left side columns -->
@@ -837,264 +897,93 @@
                                 });
                             </script>
 
-                            <!--Dynamic Data-->
-                            <div id="chart"></div>
-                            <div id="expenseChart"></div>
-                            <div id="incomeChart"></div>
-                            <div id="salaryChart"></div>
-                            <div id="companyPerformanceChart"></div>
-                            @section Scripts
-                            {
-                                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                            <!-- Website Traffic -->
+                            <div class="card">
+                                <div class="filter">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li class="dropdown-header text-start">
+                                            <h6>Filter</h6>
+                                        </li>
 
-                                <script type="text/javascript">
+                                        <li><a class="dropdown-item" href="#">Today</a></li>
+                                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                                        <li><a class="dropdown-item" href="#">This Year</a></li>
+                                    </ul>
+                                </div>
 
-                                   /* google.charts.load('current', { 'packages': ['corechart'] });
-                                    google.charts.setOnLoadCallback(drawChart);
-                                    function drawChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=ChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-                                        var data = new google.visualization.DataTable(jsonData);
-                                        var options = {
-                                            'title': 'My Total Expense Spread',
-                                            'width': 600,
-                                            'height': 500
-                                        };
+                                <div class="card-body pb-0">
+                                    <h5 class="card-title">Website Traffic <span>| Today</span></h5>
 
-                                        //var chart = new google.visualization.PieChart(document.getElementById('chart'));
-                                        var chart = new google.visualization.BarChart(document.getElementById('chart'));
+                                    <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
-                                        chart.draw(data, options);
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            echarts.init(document.querySelector("#trafficChart")).setOption({
+                                                tooltip: {
+                                                    trigger: 'item'
+                                                },
+                                                legend: {
+                                                    top: '5%',
+                                                    left: 'center'
+                                                },
+                                                series: [{
+                                                    name: 'Access From',
+                                                    type: 'pie',
+                                                    radius: ['40%', '70%'],
+                                                    avoidLabelOverlap: false,
+                                                    label: {
+                                                        show: false,
+                                                        position: 'center'
+                                                    },
+                                                    emphasis: {
+                                                        label: {
+                                                            show: true,
+                                                            fontSize: '18',
+                                                            fontWeight: 'bold'
+                                                        }
+                                                    },
+                                                    labelLine: {
+                                                        show: false
+                                                    },
+                                                    data: [{
+                                                        value: 1048,
+                                                        name: 'Search Engine'
+                                                    },
+                                                    {
+                                                        value: 735,
+                                                        name: 'Direct'
+                                                    },
+                                                    {
+                                                        value: 580,
+                                                        name: 'Email'
+                                                    },
+                                                    {
+                                                        value: 484,
+                                                        name: 'Union Ads'
+                                                    },
+                                                    {
+                                                        value: 300,
+                                                        name: 'Video Ads'
+                                                    }
+                                                    ]
+                                                }]
+                                            });
+                                        });
+                                    </script>
 
-
-                                    } */
-
-                                    google.charts.load('current', { 'packages': ['corechart'] });
-                                    google.charts.setOnLoadCallback(drawAllCharts);
-
-                                    function drawAllCharts() {
-                                        //drawExpenseChart(); //- barchart
-                                       // drawSalaryChart(); //- barchart
-                                        drawIncomeChart(); //- barchart
-                                        drawSalaryScatterChart();
-                                     //   drawIncomeAreaChart();
-                                      //  drawCompanyPerformanceChart();
-                                      //  drawExpenseColumnChart(); //- column chart
-                                        drawExpensePieChart(); //- piechart
-                                        
-
-
-                                    }
-
-                                    // bar chart
-
-                                 /* function drawExpenseChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=ChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var data = new google.visualization.DataTable(jsonData);
-
-                                        var options = {
-                                            'title': 'My Total Expense Spread',
-                                            'width': 600,
-                                            'height': 500
-                                        };
-
-                                        var chart = new google.visualization.BarChart(document.getElementById('expenseChart'));
-                                        chart.draw(data, options);
-                                    } */
-
-                                    // piechart
-                                    function drawExpensePieChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=ChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var data = new google.visualization.DataTable(jsonData);
-
-                                        var options = {
-                                            'title': 'My Total Expense Spread',
-                                            'width': 600,
-                                            'height': 500
-                                        };
-
-                                        var chart = new google.visualization.PieChart(document.getElementById('expenseChart'));
-                                        chart.draw(data, options);
-                                    } 
-
-
-                                    // column chart
-                                   /* function drawExpenseColumnChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=ChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var data = new google.visualization.DataTable(jsonData);
-
-                                        var options = {
-                                            title: 'My Total Expense Spread (Column Chart)',
-                                            width: 600,
-                                            height: 500,
-                                            bars: 'vertical', // Specify vertical bars for a column chart
-                                            colors: ['#3366cc'], // Color for the columns
-                                            legend: { position: 'none' } // Hide the legend
-                                        };
-
-                                        var chart = new google.visualization.ColumnChart(document.getElementById('expenseChart'));
-                                        chart.draw(data, options);
-                                    } */
+                                </div>
+                            </div><!-- End Website Traffic -->
 
 
 
-                                  
-                                    // bar chart
-                                   /* function drawSalaryChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=SalaryChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var data = new google.visualization.DataTable(jsonData);
-
-                                        var options = {
-                                            'title': 'Total Salary PayOut',
-                                            'width': 600,
-                                            'height': 500
-                                        };
-
-                                        var chart = new google.visualization.BarChart(document.getElementById('salaryChart'));
-                                        chart.draw(data, options);
-                                    } */
-                                    
-                                    // bar chart
-                                    function drawIncomeChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=IncomeChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var data = new google.visualization.DataTable(jsonData);
-
-                                        var options = {
-                                            'title': 'My Total Income Spread',
-                                            'width': 600,
-                                            'height': 500
-                                        };
-
-                                        var chart = new google.visualization.BarChart(document.getElementById('incomeChart'));
-                                        chart.draw(data, options);
-                                    } 
-
-                                   function drawSalaryScatterChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=SalaryChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var data = new google.visualization.DataTable(jsonData);
-
-                                        var options = {
-                                            title: 'Salary Scatter Chart',
-                                            width: 600,
-                                            height: 500,
-                                            hAxis: { title: 'Date' },
-                                            vAxis: { title: 'Wage' },
-                                            legend: 'none'
-                                        };
-
-                                        var chart = new google.visualization.ScatterChart(document.getElementById('salaryChart'));
-                                        chart.draw(data, options);
-                                    }
-
-                                   /* function drawIncomeAreaChart() {
-                                        var jsonData = $.ajax({
-                                            url: "?handler=IncomeChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var data = new google.visualization.DataTable(jsonData);
-
-                                        var options = {
-                                            title: 'Income Area Chart',
-                                            width: 600,
-                                            height: 500,
-                                            hAxis: { title: 'Category' },
-                                            vAxis: { title: 'Amount' },
-                                            legend: 'none',
-                                            isStacked: true, // Area chart option
-                                            areaOpacity: 0.5 // Area chart option
-                                        };
-
-                                        var chart = new google.visualization.AreaChart(document.getElementById('incomeChart'));
-                                        chart.draw(data, options);
-                                    } */
-
-
-
-                                    // company performance - hard code then? - does not work yet
-
-
-                                   /* function drawCompanyPerformanceChart() {
-                                        var expenseData = $.ajax({
-                                            url: "?handler=ChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var incomeData = $.ajax({
-                                            url: "?handler=IncomeChartData",
-                                            dataType: "json",
-                                            async: false
-                                        }).responseText;
-
-                                        var combinedData = transformCompanyData(expenseData, incomeData);
-
-                                        var options = {
-                                            title: 'Company Performance',
-                                            curveType: 'function',
-                                            legend: { position: 'bottom' }
-                                        };
-
-                                        var chart = new google.visualization.LineChart(document.getElementById('companyPerformanceChart'));
-
-                                        chart.draw(combinedData, options);
-                                    }
-
-                                    function transformCompanyData(expenseData, incomeData) {
-                                        var dataTable = new google.visualization.DataTable();
-                                        dataTable.addColumn('string', 'Year');
-                                        dataTable.addColumn('number', 'Expenses');
-                                        dataTable.addColumn('number', 'Income');
-
-                                        // Transform and combine the data from expenseData and incomeData
-                                        // Loop through the data and add rows to dataTable
-                                        // ... your code to transform and populate data here ...
-
-                                        return dataTable;
-                                    } */
-                                       
-                                </script>
-                            }
-
-                        </div>
+                   
                     </div><!-- End Budget Report -->
 
 
                 </div><!-- End Right side columns -->
+
+
 
             </div>
         </section>
